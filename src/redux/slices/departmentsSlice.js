@@ -1,9 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import defaultDepartments from "../../data/departments.json";
+
+export const departmentsAdapter = createEntityAdapter();
 
 const departmentsSlice = createSlice({
   name: "departments",
-  initialState: defaultDepartments,
+  initialState: departmentsAdapter.getInitialState(
+    { lastInsertId: null },
+    defaultDepartments
+  ),
   reducers: {},
 });
 

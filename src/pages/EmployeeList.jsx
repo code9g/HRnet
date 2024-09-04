@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import columns from "../data/employees.columns.json";
+import { useEmployeesSelector } from "../redux/selectors";
 
-function EmployeesView() {
-  const employees = useSelector((state) => state.employees);
+function EmployeeList() {
+  const employees = useEmployeesSelector();
 
   const transform = (data, field, type) => {
     switch (type) {
@@ -30,12 +30,17 @@ function EmployeesView() {
           {employees.map((employee, rowIndex) => (
             <tr
               key={employee.id}
-              style={{ backgroundColor: rowIndex % 2 ? "#ffffff" : "#e0e0e0" }}
+              style={{
+                backgroundColor: rowIndex % 2 ? "#ffffff" : "#e0e0e0",
+              }}
             >
               {columns.map((column, colIndex) => (
                 <td
                   key={colIndex}
-                  style={{ padding: "4px", borderLeft: "1px solid #e0e0e0" }}
+                  style={{
+                    padding: "4px",
+                    borderLeft: "1px solid #e0e0e0",
+                  }}
                 >
                   {transform(employee[column.data], column.data, column.type)}
                 </td>
@@ -48,6 +53,6 @@ function EmployeesView() {
   );
 }
 
-EmployeesView.propTypes = {};
+EmployeeList.propTypes = {};
 
-export default EmployeesView;
+export default EmployeeList;

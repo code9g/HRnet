@@ -1,26 +1,26 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
 import "./App.css";
 import Layout from "./layouts/Layout";
-import EmployeesAdd from "./pages/EmployeesAdd";
-import EmployeesView from "./pages/EmployeesView";
+import CreateEmployee from "./pages/CreateEmployee";
+import EmployeeList from "./pages/EmployeeList";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route errorElement={<Error />}>
       <Route index element={<Home />} />
       <Route path="employees">
-        <Route index element={<Navigate to="/employees/view" />} />
-        <Route path="view" element={<EmployeesView />} />
-        <Route path="add" element={<EmployeesAdd />} />
+        <Route index element={<EmployeeList />} />
+        <Route path="create" element={<CreateEmployee />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Route>
   </Route>
 );
