@@ -14,10 +14,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 const employeeSchema = z.object({
   firstName: z.string().trim().min(1, { message: "First name is required" }),
   lastName: z.string().trim().min(1, { message: "Last name is required" }),
-  dateOfBirth: z.date({ message: "Date of Birth is required" }),
-  // .refine((date) => new Date().getFullYear() - date.getFullYear() > 16, {
-  //   message: "Date birth must be at least 16 ",
-  // }),
+  dateOfBirth: z
+    .date({ message: "Date of Birth is required" })
+    .refine((date) => new Date().getFullYear() - date.getFullYear() > 16, {
+      message: "Date birth must be at least 16 ",
+    }),
   startDate: z.date({ message: "Start date is required" }),
   street: z.string().trim().min(1, { message: "Street is required" }),
   city: z.string().trim().min(1, { message: "City is required" }),
@@ -46,7 +47,7 @@ function EmployeeForm({ employee, submit }) {
       >
         <FormText name="firstName" label="First Name" control={control} />
         <FormText name="lastName" label="Last Name" control={control} />
-        <div className="flex flex-row justify-between gap-10">
+        <div className="flex flex-row justify-between">
           <FormDate
             name="dateOfBirth"
             label="Date of Birth"
@@ -68,15 +69,15 @@ function EmployeeForm({ employee, submit }) {
                 placeholder="Select a state"
                 options={states}
                 optionLabel="name"
-                optionValue="abbreviation"
+                optionValue="name"
                 control={control}
-                className="flex-1"
+                className=""
               />
               <FormNumber
                 name="zipCode"
                 label="Zip Code"
                 control={control}
-                className="flex-1"
+                className=""
               />
             </div>
           </CardContent>
