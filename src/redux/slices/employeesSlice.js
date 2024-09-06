@@ -7,7 +7,7 @@ const employeesSlice = createSlice({
   name: "employees",
   initialState: employeesAdapter.getInitialState(
     { lastInsertId: null },
-    defaultEmployees.slice(0, 5)
+    defaultEmployees
   ),
   reducers: {
     createEmployee: (state, action) => {
