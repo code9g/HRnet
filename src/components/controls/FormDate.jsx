@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
 import { useState } from "react";
+import { Calendar } from "../Calendar";
 import { Button } from "../ui/button";
-import { Calendar } from "../ui/calendar";
 import {
   FormControl,
   FormDescription,
@@ -16,8 +15,17 @@ import {
 } from "../ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
+const intlDateFormat = new Intl.DateTimeFormat("en-US", {
+  month: "2-digit",
+  day: "2-digit",
+  year: "numeric",
+});
+
+const format = (date) => intlDateFormat.format(date);
+
 function FormDate({ name, label, description, className, control }) {
   const [open, setOpen] = useState(false);
+
   return (
     <FormField
       control={control}
@@ -38,21 +46,22 @@ function FormDate({ name, label, description, className, control }) {
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {field.value ? (
-                    format(field.value, "MM/dd/yyyy")
-                  ) : (
-                    <span>Pick a date</span>
-                  )}
+                  {field.value ? format(field.value) : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0">
                 <Calendar
                   mode="single"
                   selected={field.value}
+                  defaultMonth={field.value}
+                  captionLayout="dropdown-buttons"
+                  today={new Date()}
                   onSelect={(value) => {
                     field.onChange(value);
                     setOpen(false);
                   }}
+                  fromYear={1960}
+                  toYear={2030}
                   initialFocus
                 />
               </PopoverContent>

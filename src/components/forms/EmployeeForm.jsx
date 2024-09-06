@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import FormCombo from "../controls/FormCombo";
 import FormDate from "../controls/FormDate";
 import FormNumber from "../controls/FormNumber";
-import FormSelect from "../controls/FormSelect";
 import FormText from "../controls/FormText";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
@@ -62,7 +62,7 @@ function EmployeeForm({ employee, submit }) {
             <FormText name="street" label="Street" control={control} />
             <FormText name="city" label="City" control={control} />
             <div className="flex flex-row justify-between gap-10">
-              <FormSelect
+              <FormCombo
                 name="state"
                 label="State"
                 placeholder="Select a state"
@@ -70,22 +70,23 @@ function EmployeeForm({ employee, submit }) {
                 optionLabel="name"
                 optionValue="abbreviation"
                 control={control}
-                className="flex-auto"
+                className="flex-1"
               />
               <FormNumber
                 name="zipCode"
                 label="Zip Code"
                 control={control}
-                className="flex-auto"
+                className="flex-1"
               />
             </div>
           </CardContent>
         </Card>
-        <FormSelect
+        <FormCombo
           name="department"
           label="Department"
           placeholder="Select a department"
           options={departments}
+          className="flex flex-col"
           optionLabel="name"
           optionValue="name"
           control={control}
