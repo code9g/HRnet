@@ -57,7 +57,7 @@ function FormDate({ name, label, description, className, control }) {
                   captionLayout="dropdown-buttons"
                   today={new Date()}
                   onSelect={(value) => {
-                    field.onChange(value);
+                    field.onChange(value ?? "");
                     setOpen(false);
                   }}
                   fromYear={1960}
