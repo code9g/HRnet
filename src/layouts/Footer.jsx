@@ -1,8 +1,10 @@
 function Footer() {
   return (
-    <div className="p-4 text-center font-bold bg-primary">
-      Copyright (c) Wealth Health 2024
-    </div>
+    <footer className="bg-primary">
+      <div className="container mx-auto py-4 text-center text-bg-900 font-bold">
+        Copyright (c) Wealth Health 2024
+      </div>
+    </footer>
   );
 }
 
