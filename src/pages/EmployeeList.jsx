@@ -21,15 +21,18 @@ const intlDTF = new Intl.DateTimeFormat("en-US", {
 
 const columns = [
   {
-    id: "filter",
-    filterFn: (row, id, value) =>
-      value.includes(row.getValue("firstName")) ||
-      value.includes(row.getValue("lastName")),
-  },
-  {
     title: "First Name",
     accessorKey: "firstName",
     header: ({ column }) => <DataTableColumnHeader column={column} />,
+    filterFn: (row, id, value) => {
+      value = value.toLowerCase();
+      return (
+        row.getValue("firstName").toLowerCase().includes(value) ||
+        row.getValue("lastName").toLowerCase().includes(value) ||
+        row.getValue("street").toLowerCase().includes(value) ||
+        row.getValue("city").toLowerCase().includes(value)
+      );
+    },
   },
   {
     title: "Last Name",
