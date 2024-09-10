@@ -42,12 +42,10 @@ const columns = [
   {
     title: "Date of Birth",
     accessorKey: "dateOfBirth",
-    header: ({ column }) => <DataTableColumnHeader column={column} />,
     className: { header: "justify-center", cell: "text-center" },
+    header: ({ column }) => <DataTableColumnHeader column={column} />,
     cell: ({ row, column }) =>
-      intlDTF.format(
-        new Date(row.getValue(column.columnDef.accessorKey).slice(0, 10))
-      ),
+      intlDTF.format(new Date(row.getValue(column.columnDef.accessorKey))),
   },
   {
     title: "Start Date",
@@ -55,9 +53,7 @@ const columns = [
     className: { header: "justify-center", cell: "text-center" },
     header: ({ column }) => <DataTableColumnHeader column={column} />,
     cell: ({ row, column }) =>
-      intlDTF.format(
-        new Date(row.getValue(column.columnDef.accessorKey).slice(0, 10))
-      ),
+      intlDTF.format(new Date(row.getValue(column.columnDef.accessorKey))),
   },
   {
     title: "Street",
@@ -99,7 +95,7 @@ const columns = [
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">Open action menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>

@@ -1,7 +1,12 @@
 import EmployeeForm from "@/components/forms/EmployeeForm";
 import { useStatesSelector } from "@/redux/selectors";
+import { createEmployee } from "@/redux/slices/employeesSlice";
+import { useDispatch } from "react-redux";
 
 function CreateEmployee() {
+  const states = useStatesSelector();
+  const dispatch = useDispatch();
+
   const employee = {
     firstName: "",
     lastName: "",
@@ -14,7 +19,6 @@ function CreateEmployee() {
     department: "",
   };
 
-  const states = useStatesSelector();
   function submit(data) {
     const state = states.find((state) => data.state === state.name);
 
@@ -27,6 +31,7 @@ function CreateEmployee() {
     };
 
     console.log("data:", data);
+    dispatch(createEmployee(data));
   }
 
   return (
