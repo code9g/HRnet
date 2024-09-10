@@ -19,13 +19,13 @@ export function Header() {
 
   const className = ({ isActive }) => {
     return (
-      "flex items-center gap-2 p-4 text-green-100 hover:bg-green-900 hover:bg-green-900 " +
-      (isActive ? "bg-green-900" : "")
+      "flex items-center gap-2 p-4 text-green-900 dark:text-green-100 hover:bg-green-900 hover:bg-green-900 hover:text-green-100 " +
+      (isActive ? "bg-primary dark:bg-green-900" : "")
     );
   };
 
   return (
-    <div className="bg-primary shadow-lg">
+    <div className="shadow-md dark:shadow-white">
       <header className="container mx-auto flex flex-row justify-between items-center">
         <nav className="h-14">
           <ul className="flex flex-row flex-wrap">
