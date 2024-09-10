@@ -38,7 +38,7 @@ function DataTableToolbar({ table }) {
             column={table.getColumn("state")}
             title="State"
             options={states}
-            optionValue="name"
+            optionValue="abbreviation"
             optionLabel="name"
           />
         )}

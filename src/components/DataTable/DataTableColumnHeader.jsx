@@ -19,7 +19,13 @@ function DataTableColumnHeader({ column, className }) {
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div
+      className={cn(
+        "flex items-center space-x-2",
+        className,
+        column.columnDef.className?.header
+      )}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

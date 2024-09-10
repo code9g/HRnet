@@ -1,4 +1,5 @@
 import EmployeeForm from "@/components/forms/EmployeeForm";
+import { useStatesSelector } from "@/redux/selectors";
 
 function CreateEmployee() {
   const employee = {
@@ -13,7 +14,18 @@ function CreateEmployee() {
     department: "",
   };
 
+  const states = useStatesSelector();
   function submit(data) {
+    const state = states.find((state) => data.state === state.name);
+
+    data = {
+      ...data,
+      dateOfBirth: data.dateOfBirth.toISOString(),
+      startDate: data.startDate.toISOString(),
+      state: state.abbreviation,
+      zipCode: data.zipCode.toString().padStart(5, "0"),
+    };
+
     console.log("data:", data);
   }
 

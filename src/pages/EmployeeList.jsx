@@ -43,15 +43,21 @@ const columns = [
     title: "Date of Birth",
     accessorKey: "dateOfBirth",
     header: ({ column }) => <DataTableColumnHeader column={column} />,
-    cell: ({ row }) =>
-      intlDTF.format(new Date(row.getValue("dateOfBirth").slice(0, 10))),
+    className: { header: "justify-center", cell: "text-center" },
+    cell: ({ row, column }) =>
+      intlDTF.format(
+        new Date(row.getValue(column.columnDef.accessorKey).slice(0, 10))
+      ),
   },
   {
     title: "Start Date",
     accessorKey: "startDate",
+    className: { header: "justify-center", cell: "text-center" },
     header: ({ column }) => <DataTableColumnHeader column={column} />,
-    cell: ({ row }) =>
-      intlDTF.format(new Date(row.getValue("startDate").slice(0, 10))),
+    cell: ({ row, column }) =>
+      intlDTF.format(
+        new Date(row.getValue(column.columnDef.accessorKey).slice(0, 10))
+      ),
   },
   {
     title: "Street",
@@ -66,12 +72,14 @@ const columns = [
   {
     title: "State",
     accessorKey: "state",
+    className: { header: "justify-center", cell: "text-center" },
     header: ({ column }) => <DataTableColumnHeader column={column} />,
     filterFn: (row, id, value) => value.includes(row.getValue(id)),
   },
   {
     title: "Zip code",
     accessorKey: "zipCode",
+    className: { header: "justify-center", cell: "text-center" },
     header: ({ column }) => <DataTableColumnHeader column={column} />,
   },
   {
@@ -83,6 +91,7 @@ const columns = [
   {
     id: "actions",
     header: "Actions",
+    className: { header: "text-center", cell: "text-center" },
     cell: ({ row }) => {
       const fullName =
         row.getValue("firstName") + " " + row.getValue("lastName");
