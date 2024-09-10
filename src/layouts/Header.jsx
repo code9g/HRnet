@@ -16,10 +16,10 @@ export function Header() {
     },
   ];
 
-  const clnm = ({ isActive }) => {
+  const className = ({ isActive }) => {
     return (
-      "flex items-center gap-2 p-4 hover:bg-green-900 hover:text-green-100 hover:bg-green-900 " +
-      (isActive ? "bg-green-900 text-green-100" : "text-green-900")
+      "flex items-center gap-2 p-4 text-green-100 hover:bg-green-900 hover:bg-green-900 " +
+      (isActive ? "bg-green-900" : "")
     );
   };
 
@@ -30,7 +30,7 @@ export function Header() {
           <ul className="flex flex-row flex-wrap">
             {links.map((link, index) => (
               <li key={index}>
-                <NavLink to={link.to} className={clnm}>
+                <NavLink to={link.to} className={className}>
                   {link.icon}
                   {link.title}
                 </NavLink>
