@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import PropTypes from "prop-types";
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
 
@@ -51,6 +52,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
         ...classNames,
       }}
       components={{
+        /* eslint-disable */
         Dropdown: ({ value, onChange, children, ...props }) => {
           const options = React.Children.toArray(children);
           const selected = options.find((child) => child.props.value === value);
@@ -92,6 +94,12 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
     />
   );
 }
+
 Calendar.displayName = "Calendar";
+Calendar.propTypes = {
+  className: PropTypes.any,
+  classNames: PropTypes.any,
+  showOutsideDays: PropTypes.bool,
+};
 
 export { Calendar };
