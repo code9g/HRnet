@@ -24,9 +24,9 @@ export function Header() {
   };
 
   return (
-    <div className="bg-primary h-14 flex items-center">
+    <div className="bg-primary">
       <header className="container mx-auto">
-        <nav>
+        <nav className="h-14">
           <ul className="flex flex-row flex-wrap">
             {links.map((link, index) => (
               <li key={index}>
