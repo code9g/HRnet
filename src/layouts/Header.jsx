@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/ModeToggle";
 import { HomeIcon, TablePropertiesIcon, UserPlusIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -24,8 +25,8 @@ export function Header() {
   };
 
   return (
-    <div className="bg-primary">
-      <header className="container mx-auto">
+    <div className="bg-primary shadow-lg">
+      <header className="container mx-auto flex flex-row justify-between items-center">
         <nav className="h-14">
           <ul className="flex flex-row flex-wrap">
             {links.map((link, index) => (
@@ -38,6 +39,7 @@ export function Header() {
             ))}
           </ul>
         </nav>
+        <ModeToggle />
       </header>
     </div>
   );
