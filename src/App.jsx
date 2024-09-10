@@ -16,10 +16,8 @@ const routes = createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route errorElement={<Error />}>
       <Route index element={<Home />} />
-      <Route path="employees">
-        <Route index element={<EmployeeList />} />
-        <Route path="create" element={<CreateEmployee />} />
-      </Route>
+      <Route path="employee-list" element={<EmployeeList />} />
+      <Route path="create-an-employee" element={<CreateEmployee />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   </Route>

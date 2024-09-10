@@ -6,7 +6,9 @@ function Layout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <main className="container mx-auto py-10">
+        <Outlet />
+      </main>
       <Footer />
     </>
   );

@@ -10,9 +10,9 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "../ui/form";
+import { Label } from "../ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const intlDateFormat = new Intl.DateTimeFormat("en-US", {
@@ -32,7 +32,7 @@ function FormDate({ name, label, description, className, control }) {
       name={name}
       render={({ field }) => (
         <FormItem className={cn("flex flex-col", className)}>
-          <FormLabel>{label}</FormLabel>
+          <Label>{label}</Label>
           <FormControl>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>

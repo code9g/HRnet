@@ -1,22 +1,34 @@
+import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
 
-function Header() {
-  const links = [
-    { label: "Home", to: "/" },
-    { label: "Create an employee", to: "/employees/create" },
-    { label: "View employees list", to: "/employees" },
-  ];
+export function Header() {
+  const clnm = ({ isActive, ...args }) => {
+    console.log(args);
+    return isActive ? "bg-red-100" : "";
+  };
   return (
-    <div>
-      <nav>
-        <ul>
-          {links.map((link, index) => (
-            <li key={index}>
-              <NavLink to={link.to}>{link.label}</NavLink>
+    <div className="bg-primary h-14 flex items-center">
+      <header className="container mx-auto">
+        <nav>
+          <ul className="flex flex-row flex-wrap gap-4">
+            <li>
+              <NavLink to="/" className={cn(clnm, "hover:bg-red-400")}>
+                Home
+              </NavLink>
             </li>
-          ))}
-        </ul>
-      </nav>
+            <li>
+              <NavLink to="/create-an-employee" className={clnm}>
+                Create an Employee
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/employee-list" className={clnm}>
+                Create an Employee
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </div>
   );
 }
