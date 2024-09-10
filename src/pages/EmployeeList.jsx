@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+import { DeleteIcon, EditIcon, MoreHorizontal, ViewIcon } from "lucide-react";
 
 const intlDTF = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -96,10 +96,19 @@ const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>{fullName}</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem disabled className="flex gap-2">
+              <EditIcon />
+              Edit
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-            <DropdownMenuItem>View info</DropdownMenuItem>
+            <DropdownMenuItem disabled className="flex gap-2">
+              <DeleteIcon />
+              Delete
+            </DropdownMenuItem>
+            <DropdownMenuItem disabled className="flex gap-2">
+              <ViewIcon />
+              View info
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
