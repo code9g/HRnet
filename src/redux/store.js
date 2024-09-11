@@ -9,6 +9,7 @@ const store = configureStore({
     [statesSlice.name]: statesSlice.reducer,
     [departmentsSlice.name]: departmentsSlice.reducer,
   },
+  devTools: import.meta.env.DEV,
 });
 
 export default store;
