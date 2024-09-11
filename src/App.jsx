@@ -11,6 +11,7 @@ import EmployeeList from "./pages/EmployeeList";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Settings from "./pages/Settings";
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -18,6 +19,7 @@ const routes = createRoutesFromElements(
       <Route index element={<Home />} />
       <Route path="employee-list" element={<EmployeeList />} />
       <Route path="create-an-employee" element={<CreateEmployee />} />
+      <Route path="settings" element={<Settings />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   </Route>

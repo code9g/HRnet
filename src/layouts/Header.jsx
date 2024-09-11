@@ -1,5 +1,10 @@
 import { ModeToggle } from "@/components/ModeToggle";
-import { HomeIcon, TablePropertiesIcon, UserPlusIcon } from "lucide-react";
+import {
+  HomeIcon,
+  SettingsIcon,
+  TablePropertiesIcon,
+  UserPlusIcon,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
@@ -14,6 +19,11 @@ export function Header() {
       to: "/employee-list",
       icon: <TablePropertiesIcon />,
       title: "Employee List",
+    },
+    {
+      to: "/settings",
+      icon: <SettingsIcon />,
+      title: "Settings",
     },
   ];
 
