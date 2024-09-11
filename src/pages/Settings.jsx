@@ -17,21 +17,34 @@ function Settings() {
   const handleGenerate = (e) => {
     e.preventDefault();
     let value = parseInt(fakeRef.current.value, 10);
-    console.log(`Add ${value} fake employee(s)`);
-
-    const n = employees.length;
-    let i;
-    while (value > 0) {
-      i = Math.ceil(Math.random() * n);
-      dispatch(createEmployee(employees[i]));
-      value--;
+    console.log(`Add ${value} fake employee(s)...`);
+    try {
+      const n = employees.length;
+      let i;
+      while (value > 0) {
+        i = Math.ceil(Math.random() * n);
+        dispatch(createEmployee({ ...employees[i] }));
+        value--;
+      }
+    } catch (e) {
+      console.log(`Add fake employee(s) failed !`);
+      console.log(e);
+      throw e;
     }
+    console.log(`Add fake employee(s) successfully`);
   };
 
   const handleDeleteAll = (e) => {
     e.preventDefault();
-    console.log("Remove all employees");
-    dispatch(deleteAllEmployees());
+    console.log("Remove all employees...");
+    try {
+      dispatch(deleteAllEmployees());
+    } catch (e) {
+      console.log("Remove all employees failed !");
+      console.log(e);
+      throw e;
+    }
+    console.log("Remove all employees successfully");
   };
 
   return (
