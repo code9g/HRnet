@@ -1,14 +1,10 @@
 import { createEntityAdapter, createSlice, nanoid } from "@reduxjs/toolkit";
-import defaultEmployees from "../../data/employees.json";
 
 export const employeesAdapter = createEntityAdapter();
 
 const employeesSlice = createSlice({
   name: "employees",
-  initialState: employeesAdapter.getInitialState(
-    { lastInsertId: null },
-    defaultEmployees
-  ),
+  initialState: employeesAdapter.getInitialState({ lastInsertId: null }),
   reducers: {
     createEmployee: (state, action) => {
       const id = nanoid();
@@ -21,7 +17,7 @@ const employeesSlice = createSlice({
   },
 });
 
-export const { createEmployee, updateEmployee, deleteEmployee } =
+export const { testEmployee, createEmployee, updateEmployee, deleteEmployee } =
   employeesSlice.actions;
 
 export default employeesSlice;
