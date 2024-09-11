@@ -14,10 +14,15 @@ const employeesSlice = createSlice({
     },
     updateEmployee: employeesAdapter.setOne,
     deleteEmployee: employeesAdapter.removeOne,
+    deleteAllEmployees: employeesAdapter.removeAll,
   },
 });
 
-export const { testEmployee, createEmployee, updateEmployee, deleteEmployee } =
-  employeesSlice.actions;
+export const {
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+  deleteAllEmployees,
+} = employeesSlice.actions;
 
 export default employeesSlice;

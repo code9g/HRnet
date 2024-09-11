@@ -124,7 +124,12 @@ const columns = [
 function EmployeeList() {
   const employees = useEmployeesSelector();
 
-  return <DataTable columns={columns} data={employees} />;
+  return (
+    <>
+      <h2 className="text-3xl text-center font-bold mb-4 p-4">Employee List</h2>
+      <DataTable columns={columns} data={employees} />;
+    </>
+  );
 }
 
 EmployeeList.propTypes = {};
