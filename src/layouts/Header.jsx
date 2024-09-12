@@ -29,8 +29,10 @@ export function Header() {
 
   const className = ({ isActive }) => {
     return (
-      "flex items-center gap-2 p-4 text-green-900 dark:text-green-100 hover:bg-green-900 hover:bg-green-900 hover:text-green-100 " +
-      (isActive ? "text-green-100 bg-green-900 dark:bg-green-900" : "")
+      "flex items-center gap-2 p-4 hover:bg-green-900 hover:text-green-100 " +
+      (isActive
+        ? "text-green-100 bg-green-900 dark:bg-green-900"
+        : "text-green-900 dark:text-green-100 ")
     );
   };
 
