@@ -31,6 +31,7 @@ function FormCombo({
   optionLabel,
   className,
   control,
+  ariaLabel,
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -42,7 +43,7 @@ function FormCombo({
           <Label>{label}</Label>
           <FormControl>
             <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
+              <PopoverTrigger aria-label={ariaLabel} asChild>
                 <Button
                   variant="outline"
                   role="combobox"
@@ -112,6 +113,7 @@ FormCombo.propTypes = {
   optionLabel: PropTypes.string,
   className: PropTypes.string,
   control: PropTypes.object,
+  ariaLabel: PropTypes.string,
 };
 
 export default FormCombo;

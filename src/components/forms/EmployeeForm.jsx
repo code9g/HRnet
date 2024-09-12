@@ -71,6 +71,7 @@ function EmployeeForm({ employee, submit }) {
                 optionLabel="name"
                 optionValue="name"
                 control={control}
+                ariaLabel="select state"
                 className="mt-2 flex flex-col"
               />
               <FormNumber
@@ -90,6 +91,7 @@ function EmployeeForm({ employee, submit }) {
           className="flex flex-col"
           optionLabel="name"
           optionValue="name"
+          ariaLabel="select department"
           control={control}
         />
         <Button type="submit">Submit</Button>
