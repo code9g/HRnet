@@ -21,7 +21,7 @@ import { useState } from "react";
 import DataTablePagination from "./DataTablePagination";
 import DataTableToolbar from "./DataTableToolbar";
 
-function DataTable({ columns, data }) {
+function DataTable({ columns, data, search, filters = [] }) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState({});
   const [columnFilters, setColumnFilters] = useState([]);
@@ -51,7 +51,7 @@ function DataTable({ columns, data }) {
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} search={search} filters={filters} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -117,6 +117,8 @@ function DataTable({ columns, data }) {
 DataTable.propTypes = {
   columns: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
+  search: PropTypes.string,
+  filters: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default DataTable;

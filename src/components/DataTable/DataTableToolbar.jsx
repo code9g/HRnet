@@ -1,47 +1,43 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useDepartmentsSelector, useStatesSelector } from "@/redux/selectors";
+import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 import PropTypes from "prop-types";
 import DataTableFacetedFilter from "./DataTableFacetedFilter";
 import { DataTableViewOptions } from "./DataTableViewOptions";
 
-function DataTableToolbar({ table }) {
-  const departments = useDepartmentsSelector();
-  const states = useStatesSelector();
-
+function DataTableToolbar({ table, search, filters = [], className }) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="flex items-center justify-between">
+    <div className={cn("flex items-center justify-between", className)}>
       <div className="flex flex-1 items-center space-x-2">
-        <Input
-          name="search"
-          placeholder="Filter..."
-          value={table.getColumn("firstName")?.getFilterValue() ?? ""}
-          onChange={(event) => {
-            table.getColumn("firstName")?.setFilterValue(event.target.value);
-          }}
-          className="h-8 w-[150px] lg:w-[250px]"
-        />
-        {table.getColumn("department") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("department")}
-            title="Department"
-            options={departments}
-            optionLabel="name"
-            optionValue="name"
+        {table.getColumn(search) && (
+          <Input
+            name="search"
+            placeholder="Filter..."
+            value={table.getColumn(search)?.getFilterValue() ?? ""}
+            onChange={(event) => {
+              table.getColumn(search)?.setFilterValue(event.target.value);
+            }}
+            className="h-8 w-[150px] lg:w-[250px]"
           />
         )}
-        {table.getColumn("state") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("state")}
-            title="State"
-            options={states}
-            optionValue="abbreviation"
-            optionLabel="name"
-          />
-        )}
+        {filters.map((filter, index) => {
+          const column = table.getColumn(filter.column);
+          return (
+            column && (
+              <DataTableFacetedFilter
+                key={index}
+                column={column}
+                title={filter.title}
+                options={filter.options}
+                optionLabel={filter.optionLabel}
+                optionValue={filter.optionValue}
+              />
+            )
+          );
+        })}
         {isFiltered && (
           <Button
             variant="ghost"
@@ -60,6 +56,9 @@ function DataTableToolbar({ table }) {
 
 DataTableToolbar.propTypes = {
   table: PropTypes.object.isRequired,
+  search: PropTypes.string.isRequired,
+  filters: PropTypes.arrayOf(PropTypes.object),
+  className: PropTypes.any,
 };
 
 export default DataTableToolbar;

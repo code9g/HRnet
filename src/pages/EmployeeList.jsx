@@ -12,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DeleteIcon, EditIcon, MoreHorizontal, ViewIcon } from "lucide-react";
+import departments from "../data/departments.json";
+import states from "../data/states.json";
 
 const intlDTF = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -121,13 +123,36 @@ const columns = [
   },
 ];
 
+const filters = [
+  {
+    column: "department",
+    title: "Department",
+    options: departments,
+    optionLabel: "name",
+    optionValue: "name",
+  },
+  {
+    column: "state",
+    title: "State",
+    options: states,
+    optionLabel: "name",
+    optionValue: "abbreviation",
+  },
+];
+
 function EmployeeList() {
   const employees = useEmployeesSelector();
 
   return (
     <>
       <h2 className="text-3xl text-center font-bold mb-4 p-4">Employee List</h2>
-      <DataTable columns={columns} data={employees} />;
+      <DataTable
+        columns={columns}
+        data={employees}
+        search="firstName"
+        filters={filters}
+      />
+      ;
     </>
   );
 }
