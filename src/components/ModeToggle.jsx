@@ -1,4 +1,4 @@
-import { Moon, Sun } from "lucide-react";
+import { CheckIcon, Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import useTheme from "./hooks/useTheme";
 
+const themes = ["light", "dark", "system"];
+
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -22,15 +24,15 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
+        {themes.map((value, index) => (
+          <DropdownMenuItem
+            key={index}
+            className="flex justify-between capitalize"
+            onClick={() => setTheme(value)}
+          >
+            {value} {value === theme && <CheckIcon />}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
