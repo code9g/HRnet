@@ -56,13 +56,12 @@ function DataTable({ columns, data, search, filters = [] }) {
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow
+                key={headerGroup.id}
+                className="bg-green-900 text-green-100 hover:bg-green-700 "
+              >
                 {headerGroup.headers.map((header) => (
-                  <TableHead
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    className={header.column.columnDef.className?.header}
-                  >
+                  <TableHead key={header.id} colSpan={header.colSpan}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -80,7 +79,7 @@ function DataTable({ columns, data, search, filters = [] }) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className={index % 2 === 1 && "bg-slate-50"}
+                  className={index % 2 && "bg-green-50 dark:bg-green-950"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell

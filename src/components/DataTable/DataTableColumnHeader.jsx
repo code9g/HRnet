@@ -31,7 +31,7 @@ function DataTableColumnHeader({ column, className }) {
           <Button
             variant="ghost"
             size="sm"
-            className="-ml-3 h-8 data-[state=open]:bg-accent"
+            className="-ml-3 h-8 data-[state=open]:bg-accent text-green-100"
           >
             <span>{title}</span>
             {column.getIsSorted() === "desc" ? (
