@@ -2,16 +2,6 @@ import { useEmployeesSelector } from "../redux/selectors";
 
 import DataTable from "@/components/DataTable/DataTable";
 import DataTableColumnHeader from "@/components/DataTable/DataTableColumnHeader";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { DeleteIcon, EditIcon, MoreHorizontal, ViewIcon } from "lucide-react";
 import departments from "../data/departments.json";
 import states from "../data/states.json";
 
@@ -85,41 +75,6 @@ const columns = [
     accessorKey: "department",
     header: ({ column }) => <DataTableColumnHeader column={column} />,
     filterFn: (row, id, value) => value.includes(row.getValue(id)),
-  },
-  {
-    id: "actions",
-    header: "Actions",
-    className: { header: "text-center", cell: "text-center" },
-    cell: ({ row }) => {
-      const fullName =
-        row.getValue("firstName") + " " + row.getValue("lastName");
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open action menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>{fullName}</DropdownMenuLabel>
-            <DropdownMenuItem disabled className="flex gap-2">
-              <EditIcon />
-              Edit
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem disabled className="flex gap-2">
-              <DeleteIcon />
-              Delete
-            </DropdownMenuItem>
-            <DropdownMenuItem disabled className="flex gap-2">
-              <ViewIcon />
-              View info
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
   },
 ];
 
