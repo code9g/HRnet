@@ -19,13 +19,7 @@ import { cn } from "@/lib/utils";
 import { CheckIcon, CirclePlusIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-function DataTableFacetedFilter({
-  column,
-  title,
-  options,
-  optionValue,
-  optionLabel,
-}) {
+function DataTableFacetedFilter({ column, title, options }) {
   const facets = column?.getFacetedUniqueValues();
   const selectedValues = new Set(column?.getFilterValue());
 
@@ -54,14 +48,14 @@ function DataTableFacetedFilter({
                   </Badge>
                 ) : (
                   options
-                    .filter((option) => selectedValues.has(option[optionValue]))
+                    .filter((option) => selectedValues.has(option.value))
                     .map((option) => (
                       <Badge
                         variant="secondary"
-                        key={option[optionValue]}
+                        key={option.value}
                         className="rounded-sm px-1 font-normal"
                       >
-                        {option[optionLabel]}
+                        {option.label}
                       </Badge>
                     ))
                 )}
@@ -77,15 +71,15 @@ function DataTableFacetedFilter({
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
-                const isSelected = selectedValues.has(option[optionValue]);
+                const isSelected = selectedValues.has(option.value);
                 return (
                   <CommandItem
-                    key={option[optionValue]}
+                    key={option.value}
                     onSelect={() => {
                       if (isSelected) {
-                        selectedValues.delete(option[optionValue]);
+                        selectedValues.delete(option.value);
                       } else {
-                        selectedValues.add(option[optionValue]);
+                        selectedValues.add(option.value);
                       }
                       const filterValues = Array.from(selectedValues);
                       column?.setFilterValue(
@@ -106,10 +100,10 @@ function DataTableFacetedFilter({
                     {option.icon && (
                       <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                     )}
-                    <span>{option[optionLabel]}</span>
-                    {facets?.get(option[optionValue]) && (
+                    <span>{option.label}</span>
+                    {facets?.get(option.value) && (
                       <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">
-                        {facets.get(option[optionValue])}
+                        {facets.get(option.value)}
                       </span>
                     )}
                   </CommandItem>
@@ -140,8 +134,6 @@ DataTableFacetedFilter.propTypes = {
   column: PropTypes.object,
   title: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
-  optionValue: PropTypes.string,
-  optionLabel: PropTypes.string,
 };
 
 export default DataTableFacetedFilter;

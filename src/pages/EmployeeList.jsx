@@ -1,9 +1,11 @@
-import { useEmployeesSelector } from "../redux/selectors";
+import {
+  useDepartmentsSelector,
+  useEmployeesSelector,
+  useStatesSelector,
+} from "../redux/selectors";
 
 import DataTable from "@/components/DataTable/DataTable";
 import DataTableColumnHeader from "@/components/DataTable/DataTableColumnHeader";
-import departments from "../data/departments.json";
-import states from "../data/states.json";
 
 const intlDTF = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -78,25 +80,29 @@ const columns = [
   },
 ];
 
-const filters = [
-  {
-    column: "department",
-    title: "Department",
-    options: departments,
-    optionLabel: "name",
-    optionValue: "name",
-  },
-  {
-    column: "state",
-    title: "State",
-    options: states,
-    optionLabel: "name",
-    optionValue: "abbreviation",
-  },
-];
-
 function EmployeeList() {
   const employees = useEmployeesSelector();
+  const departments = useDepartmentsSelector();
+  const states = useStatesSelector();
+
+  const filters = [
+    {
+      column: "department",
+      title: "Department",
+      options: departments.map((department) => ({
+        value: department.name,
+        label: department.name,
+      })),
+    },
+    {
+      column: "state",
+      title: "State",
+      options: states.map((state) => ({
+        value: state.abbreviation,
+        label: state.name,
+      })),
+    },
+  ];
 
   return (
     <>
