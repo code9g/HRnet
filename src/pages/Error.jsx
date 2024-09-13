@@ -1,5 +1,16 @@
+import { useRouteError } from "react-router-dom";
+
 function Error() {
-  return <div>Home</div>;
+  const error = useRouteError();
+
+  console.error(error);
+
+  return (
+    <div className="flex justify-center items-center">
+      <h2 className="text-3xl">Oups ! Une erreur innatendue a eu lieu</h2>
+      <p className="text-xl">{error.statusText || error.message}</p>
+    </div>
+  );
 }
 
 Error.propTypes = {};
