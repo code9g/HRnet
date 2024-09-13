@@ -76,10 +76,11 @@ function DataTable({ columns, data, search, filters = [] }) {
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, index) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className={index % 2 === 1 && "bg-slate-50"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
