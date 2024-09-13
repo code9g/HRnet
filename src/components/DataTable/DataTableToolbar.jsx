@@ -10,8 +10,10 @@ function DataTableToolbar({ table, search, filters = [], className }) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className={cn("flex items-center justify-between", className)}>
-      <div className="flex flex-1 items-center space-x-2">
+    <div
+      className={cn("flex items-stretch justify-between h-[50px]", className)}
+    >
+      <div className="flex flex-1 items-stretch space-x-2">
         {table.getColumn(search) && (
           <Input
             name="search"
@@ -20,7 +22,7 @@ function DataTableToolbar({ table, search, filters = [], className }) {
             onChange={(event) => {
               table.getColumn(search)?.setFilterValue(event.target.value);
             }}
-            className="h-8 w-[150px] lg:w-[250px]"
+            className="h-full w-[150px] lg:w-[250px]"
           />
         )}
         {filters.map((filter, index) => {
@@ -42,7 +44,7 @@ function DataTableToolbar({ table, search, filters = [], className }) {
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
+            className="h-full px-2 lg:px-3"
           >
             Reset
             <X className="ml-2 h-4 w-4" />
