@@ -36,10 +36,6 @@ function Settings() {
     e.preventDefault();
     let value = parseInt(fakeRef.current.value, 10);
     console.log(`Add ${value} fake employee(s)...`);
-
-    const employee = fakeEmployee();
-
-    console.log(employee);
     try {
       while (value > 0) {
         dispatch(createEmployee(fakeEmployee()));
