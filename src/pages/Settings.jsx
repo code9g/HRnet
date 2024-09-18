@@ -16,6 +16,8 @@ function Settings() {
   const departments = useDepartmentsSelector();
 
   const fakeRef = useRef(null);
+  const fakeId = "fake" + nanoid(4);
+
   const dispatch = useDispatch();
 
   const fakeEmployee = () => ({
@@ -71,10 +73,10 @@ function Settings() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-row items-center gap-4">
-              <Label htmlFor="fake" className="text-nowrap">
+              <Label htmlFor={fakeId} className="text-nowrap">
                 How to ?
               </Label>
-              <Input ref={fakeRef} id="fake" type="number" defaultValue={5} />
+              <Input ref={fakeRef} id={fakeId} type="number" defaultValue={5} />
               <Button type="button" onClick={handleGenerate}>
                 Generate
               </Button>
