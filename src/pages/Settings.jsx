@@ -37,9 +37,8 @@ function Settings() {
     let value = parseInt(fakeRef.current.value, 10);
     console.log(`Add ${value} fake employee(s)...`);
     try {
-      while (value > 0) {
+      for (; value > 0; value--) {
         dispatch(createEmployee(fakeEmployee()));
-        value--;
       }
     } catch (e) {
       console.log(`Add fake employee(s) failed !`);
