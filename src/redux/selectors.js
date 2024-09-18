@@ -21,3 +21,5 @@ const { selectAll: departmentsSelectAll } = departmentsAdapter.getSelectors();
 
 export const useDepartmentsSelector = () =>
   useSelector((state) => departmentsSelectAll(state.departments));
+
+export const useConfigSelector = () => useSelector((state) => state.config);

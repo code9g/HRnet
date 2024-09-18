@@ -7,12 +7,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import useTheme from "./hooks/useTheme";
+import { useConfigSelector } from "@/redux/selectors";
+import { setTheme } from "@/redux/slices/configSlice";
+import { useDispatch } from "react-redux";
 
 const themes = ["light", "dark", "system"];
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useConfigSelector();
+  const dispatch = useDispatch();
+
+  const defineTheme = (value) => () => {
+    dispatch(setTheme(value));
+  };
 
   return (
     <DropdownMenu>
@@ -28,7 +35,7 @@ export function ModeToggle() {
           <DropdownMenuItem
             key={index}
             className="flex justify-between capitalize"
-            onClick={() => setTheme(value)}
+            onClick={defineTheme(value)}
           >
             {value} {value === theme && <CheckIcon />}
           </DropdownMenuItem>

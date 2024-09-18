@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,6 +13,7 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Settings from "./pages/Settings";
+import { useConfigSelector } from "./redux/selectors";
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -28,6 +30,26 @@ const routes = createRoutesFromElements(
 const router = createBrowserRouter(routes, { basename: "/HRnet" });
 
 function App() {
+  const { theme } = useConfigSelector();
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
   return <RouterProvider router={router} />;
 }
 

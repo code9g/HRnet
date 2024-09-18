@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import configSlice from "./slices/configSlice";
 import departmentsSlice from "./slices/departmentsSlice";
 import employeesSlice from "./slices/employeesSlice";
 import statesSlice from "./slices/statesSlice";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   [employeesSlice.name]: employeesSlice.reducer,
   [statesSlice.name]: statesSlice.reducer,
   [departmentsSlice.name]: departmentsSlice.reducer,
+  [configSlice.name]: configSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
