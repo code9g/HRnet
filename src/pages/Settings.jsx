@@ -76,7 +76,13 @@ function Settings() {
               <Label htmlFor={fakeId} className="text-nowrap">
                 How to ?
               </Label>
-              <Input ref={fakeRef} id={fakeId} type="number" defaultValue={5} />
+              <Input
+                ref={fakeRef}
+                id={fakeId}
+                type="number"
+                min={1}
+                defaultValue={5}
+              />
               <Button type="button" onClick={handleGenerate}>
                 Generate
               </Button>
