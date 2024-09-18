@@ -6,7 +6,7 @@ import employeesSlice from "./slices/employeesSlice";
 import statesSlice from "./slices/statesSlice";
 
 const persistConfig = {
-  key: "root",
+  key: "hrnet",
   storage,
   blacklist: [departmentsSlice.name, statesSlice.name],
 };
