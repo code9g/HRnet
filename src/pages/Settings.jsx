@@ -2,28 +2,47 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useDepartmentsSelector } from "@/redux/selectors";
 import {
   createEmployee,
   deleteAllEmployees,
 } from "@/redux/slices/employeesSlice";
+import { faker } from "@faker-js/faker";
+import { nanoid } from "@reduxjs/toolkit";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import employees from "../data/employees.json";
 
 function Settings() {
+  const departments = useDepartmentsSelector();
+
   const fakeRef = useRef(null);
   const dispatch = useDispatch();
+
+  const fakeEmployee = () => ({
+    id: nanoid(),
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    dateOfBirth: faker.date.birthdate(),
+    startDate: faker.date.recent(),
+    street: faker.location.streetAddress(),
+    city: faker.location.city(),
+    state: faker.location.state({ abbreviated: true }),
+    zipCode: faker.location.zipCode("#####"),
+    department:
+      departments[Math.floor(Math.random() * departments.length)].name,
+  });
 
   const handleGenerate = (e) => {
     e.preventDefault();
     let value = parseInt(fakeRef.current.value, 10);
     console.log(`Add ${value} fake employee(s)...`);
+
+    const employee = fakeEmployee();
+
+    console.log(employee);
     try {
-      const n = employees.length;
-      let i;
       while (value > 0) {
-        i = Math.ceil(Math.random() * n);
-        dispatch(createEmployee({ ...employees[i] }));
+        dispatch(createEmployee(fakeEmployee()));
         value--;
       }
     } catch (e) {
