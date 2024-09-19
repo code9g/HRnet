@@ -6,6 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useConfigSelector } from "@/redux/selectors";
+import { setRowsPerPage } from "@/redux/slices/configSlice";
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,8 +15,18 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function DataTablePagination({ table }) {
+  const { rowsPerPage } = useConfigSelector();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    table.setPageSize(rowsPerPage);
+    // eslint-disable-next-line
+  }, [rowsPerPage]);
+
   return (
     <div className="flex items-center justify-between px-2 pt-2">
       <div className="flex-1 text-sm text-muted-foreground">
@@ -25,9 +37,9 @@ function DataTablePagination({ table }) {
         <div className="flex items-center space-x-2">
           <p className="text-sm font-medium">Rows per page</p>
           <Select
-            value={`${table.getState().pagination.pageSize}`}
+            value={`${rowsPerPage}`}
             onValueChange={(value) => {
-              table.setPageSize(Number(value));
+              dispatch(setRowsPerPage(Number(value)));
             }}
           >
             <SelectTrigger className="h-8 w-[70px]" aria-label="row per page">
