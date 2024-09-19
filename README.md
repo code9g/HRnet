@@ -8,6 +8,11 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
+![shadecn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcn/ui&logoColor=white)
+![React Persist](https://img.shields.io/badge/react--persist-8A2BE2?style=for-the-badge&logoColor=white)
 
 Projet 14 du parcours "**Développeur d'application - JavaScript React**" chez [OpenClassrooms](https://openclassrooms.com/fr/).
 
@@ -15,11 +20,13 @@ Projet 14 du parcours "**Développeur d'application - JavaScript React**" chez [
 
 Faites passer une librairie jQuery vers React.
 
+![Screenshot](./ressources/employee-list.png)
+
 Vous travaillez pour le département technologique d'une grande société financière, WealthHealth.
 
 ## Installation
 
-Ce projet a été testé et réalisé avec la version 20.75.0 de Node.js
+Ce projet a été testé et réalisé avec la version 20.17.0 de Node.js
 
 ```bash
 npm install
