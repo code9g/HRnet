@@ -95,7 +95,7 @@ function Settings() {
           </CardHeader>
           <CardContent className="text-center">
             <Button type="button" onClick={handleDeleteAll}>
-              Generate
+              Delete all
             </Button>
           </CardContent>
         </Card>
