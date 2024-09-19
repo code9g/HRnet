@@ -58,7 +58,7 @@ function DataTable({ columns, data, search, filters = [] }) {
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
                 key={headerGroup.id}
-                className="bg-green-900 text-green-100 hover:bg-green-700 "
+                className="bg-primary text-primary-foreground  hover:bg-primary/90"
               >
                 {headerGroup.headers.map((header) => (
                   <TableHead key={header.id} colSpan={header.colSpan}>
@@ -79,7 +79,7 @@ function DataTable({ columns, data, search, filters = [] }) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className={index % 2 && "bg-green-50 dark:bg-green-950"}
+                  className={index % 2 && "bg-primary/10"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell

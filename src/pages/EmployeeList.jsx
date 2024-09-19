@@ -113,7 +113,6 @@ function EmployeeList() {
         search="firstName"
         filters={filters}
       />
-      ;
     </>
   );
 }

@@ -27,23 +27,26 @@ export function Header() {
     },
   ];
 
-  const className = ({ isActive }) => {
-    return (
-      "flex items-center gap-2 p-4 hover:bg-green-900 hover:text-green-100 " +
-      (isActive
-        ? "text-green-100 bg-green-900 dark:bg-green-900"
-        : "text-green-900 dark:text-green-100 ")
-    );
-  };
-
   return (
-    <div className="shadow-md dark:shadow-white">
+    <div className="z-10 shadow-md dark:shadow-white w-full">
       <header className="container mx-auto flex flex-row justify-between items-center">
-        <nav className="h-14">
-          <ul className="flex flex-row flex-wrap">
+        <nav
+          aria-label="Main"
+          data-orientation="horizontal"
+          dir="ltr"
+          className=""
+        >
+          <ul
+            data-orientation="horizontal"
+            className="group flex flex-1 list-none items-center justify-center"
+            dir="ltr"
+          >
             {links.map((link, index) => (
               <li key={index}>
-                <NavLink to={link.to} className={className}>
+                <NavLink
+                  to={link.to}
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 px-6 py-4"
+                >
                   {link.icon}
                   {link.title}
                 </NavLink>

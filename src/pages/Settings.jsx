@@ -73,7 +73,7 @@ function Settings() {
             <CardTitle>Generate fake employee(s)</CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <FormItem className="pb-4 text-left text-green">
+            <FormItem className="pb-4 text-left">
               <Label htmlFor={fakeId}>How many ?</Label>
               <Input
                 ref={fakeRef}
