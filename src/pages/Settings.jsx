@@ -16,7 +16,7 @@ function Settings() {
   const departments = useDepartmentsSelector();
 
   const fakeRef = useRef(null);
-  const fakeId = "fake" + nanoid(4);
+  const fakeId = "fake-" + nanoid(4);
 
   const dispatch = useDispatch();
 
