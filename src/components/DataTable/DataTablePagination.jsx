@@ -42,7 +42,7 @@ function DataTablePagination({ table }) {
               dispatch(setRowsPerPage(Number(value)));
             }}
           >
-            <SelectTrigger className="h-8 w-[70px]" aria-label="row per page">
+            <SelectTrigger className="h-8 w-[70px]" aria-label="rows per page">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top">
