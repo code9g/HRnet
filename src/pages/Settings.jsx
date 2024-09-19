@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useDepartmentsSelector } from "@/redux/selectors";
@@ -71,11 +72,9 @@ function Settings() {
           <CardHeader>
             <CardTitle>Generate fake employee(s)</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="flex flex-row items-center gap-4">
-              <Label htmlFor={fakeId} className="text-nowrap">
-                How to ?
-              </Label>
+          <CardContent className="text-center">
+            <FormItem className="pb-4 text-left text-green">
+              <Label htmlFor={fakeId}>How many ?</Label>
               <Input
                 ref={fakeRef}
                 id={fakeId}
@@ -83,10 +82,10 @@ function Settings() {
                 min={1}
                 defaultValue={5}
               />
-              <Button type="button" onClick={handleGenerate}>
-                Generate
-              </Button>
-            </div>
+            </FormItem>
+            <Button type="button" onClick={handleGenerate}>
+              Generate
+            </Button>
           </CardContent>
         </Card>
         <Card>
