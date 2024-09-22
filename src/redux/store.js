@@ -12,12 +12,20 @@ const persistConfig = {
   blacklist: [departmentsSlice.name, statesSlice.name],
 };
 
-const rootReducer = combineReducers({
-  [employeesSlice.name]: employeesSlice.reducer,
-  [statesSlice.name]: statesSlice.reducer,
-  [departmentsSlice.name]: departmentsSlice.reducer,
-  [configSlice.name]: configSlice.reducer,
-});
+const combineSlices = (...slices) =>
+  combineReducers(
+    slices.reduce(
+      (acc, current) => ({ ...acc, [current.name]: current.reducer }),
+      {}
+    )
+  );
+
+const rootReducer = combineSlices(
+  employeesSlice,
+  statesSlice,
+  departmentsSlice,
+  configSlice
+);
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
