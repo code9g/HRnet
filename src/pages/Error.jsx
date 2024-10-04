@@ -6,7 +6,7 @@ function Error() {
   console.error(error);
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <h2 className="text-3xl">Oups ! Une erreur innatendue a eu lieu</h2>
       <p className="text-xl">{error.statusText || error.message}</p>
     </div>

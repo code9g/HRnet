@@ -82,7 +82,7 @@ function EmployeeList() {
                 {value}
               </Button>
             </HoverCardTrigger>
-            <HoverCardContent className="flex justify-center items-center w-fit space-x-4">
+            <HoverCardContent className="flex w-fit items-center justify-center space-x-4">
               {state.name} ({state.abbreviation})
             </HoverCardContent>
           </HoverCard>
@@ -125,7 +125,7 @@ function EmployeeList() {
 
   return (
     <>
-      <h2 className="text-3xl text-center font-bold mb-4 p-4">Employee List</h2>
+      <h2 className="mb-4 p-4 text-center text-3xl font-bold">Employee List</h2>
       <DataTable
         columns={columns}
         data={employees}

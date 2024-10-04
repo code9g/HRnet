@@ -45,7 +45,7 @@ function FormDate({ name, label, description, className, control }) {
                     "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon className="mr-2 size-4" />
                   {field.value ? format(field.value) : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>

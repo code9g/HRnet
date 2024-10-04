@@ -36,7 +36,7 @@ function CreateEmployee() {
 
   return (
     <>
-      <h2 className="text-3xl text-center font-bold mb-4 p-4">
+      <h2 className="mb-4 p-4 text-center text-3xl font-bold">
         Create an Employee
       </h2>
       <EmployeeForm employee={employee} submit={submit} />

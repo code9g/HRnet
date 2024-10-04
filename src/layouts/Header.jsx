@@ -28,8 +28,8 @@ export function Header() {
   ];
 
   return (
-    <div className="z-10 shadow-md dark:shadow-white w-full">
-      <header className="container mx-auto flex flex-row justify-between items-center">
+    <div className="z-10 w-full shadow-md dark:shadow-white">
+      <header className="container mx-auto flex flex-row items-center justify-between">
         <nav
           aria-label="Main"
           data-orientation="horizontal"
@@ -45,7 +45,7 @@ export function Header() {
               <li key={index}>
                 <NavLink
                   to={link.to}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 px-6 py-4"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-4 ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
                   {link.icon}
                   {link.title}

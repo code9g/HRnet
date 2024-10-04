@@ -66,8 +66,8 @@ function Settings() {
 
   return (
     <>
-      <h2 className="text-3xl text-center font-bold mb-4 p-4">Settings</h2>
-      <div className="flex flex-col gap-4 w-[400px] mx-auto">
+      <h2 className="mb-4 p-4 text-center text-3xl font-bold">Settings</h2>
+      <div className="mx-auto flex w-[400px] flex-col gap-4">
         <Card className="shadow">
           <CardHeader>
             <CardTitle>Generate fake employee(s)</CardTitle>

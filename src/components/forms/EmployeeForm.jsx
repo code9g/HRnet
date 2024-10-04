@@ -43,11 +43,11 @@ function EmployeeForm({ employee, submit }) {
       <form
         noValidate
         onSubmit={form.handleSubmit(submit)}
-        className="w-1/2 space-y-6 mx-auto"
+        className="mx-auto w-1/2 space-y-6"
       >
         <FormText name="firstName" label="First Name" control={control} />
         <FormText name="lastName" label="Last Name" control={control} />
-        <div className="flex lg:flex-row flex-col justify-between">
+        <div className="flex flex-col justify-between lg:flex-row">
           <FormDate
             name="dateOfBirth"
             label="Date of Birth"
@@ -62,7 +62,7 @@ function EmployeeForm({ employee, submit }) {
           <CardContent>
             <FormText name="street" label="Street" control={control} />
             <FormText name="city" label="City" control={control} />
-            <div className="flex lg:flex-row flex-col justify-between gap-10">
+            <div className="flex flex-col justify-between gap-10 lg:flex-row">
               <FormCombo
                 name="state"
                 label="State"
