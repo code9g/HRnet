@@ -1,11 +1,14 @@
 import EmployeeForm from "@/components/forms/EmployeeForm";
+import MessageModal from "@/components/MessageModal";
 import { useStatesSelector } from "@/redux/selectors";
 import { createEmployee } from "@/redux/slices/employeesSlice";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 function CreateEmployee() {
   const states = useStatesSelector();
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
   const employee = {
     firstName: "",
@@ -30,8 +33,11 @@ function CreateEmployee() {
       zipCode: data.zipCode.toString().padStart(5, "0"),
     };
 
-    console.log("data:", data);
     dispatch(createEmployee(data));
+
+    console.log("data:", data);
+
+    setIsOpen(true);
   }
 
   return (
@@ -40,6 +46,9 @@ function CreateEmployee() {
         Create an Employee
       </h2>
       <EmployeeForm employee={employee} submit={submit} />
+      <MessageModal isOpen={isOpen} close={() => setIsOpen(false)}>
+        Employee created susscessfuly !
+      </MessageModal>
     </>
   );
 }
