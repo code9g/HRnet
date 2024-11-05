@@ -23,7 +23,14 @@ const intlDateFormat = new Intl.DateTimeFormat("en-US", {
 
 const format = (date) => intlDateFormat.format(date);
 
-function FormDate({ name, label, description, className, control }) {
+function FormDate({
+  name,
+  label,
+  description,
+  className,
+  control,
+  toYear = 2030,
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -60,8 +67,8 @@ function FormDate({ name, label, description, className, control }) {
                     field.onChange(value ?? "");
                     setOpen(false);
                   }}
-                  fromYear={1960}
-                  toYear={2030}
+                  fromYear={1900}
+                  toYear={toYear}
                   initialFocus
                 />
               </PopoverContent>
@@ -81,6 +88,7 @@ FormDate.propTypes = {
   description: PropTypes.string,
   className: PropTypes.string,
   control: PropTypes.object,
+  toYear: PropTypes.number,
 };
 
 export default FormDate;

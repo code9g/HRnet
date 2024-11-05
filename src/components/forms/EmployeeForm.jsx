@@ -47,7 +47,7 @@ const EmployeeForm = forwardRef(({ employee, submit }, ref) => {
 
   const states = useStatesSelector();
   const departments = useDepartmentsSelector();
-
+  console.log(new Date().getFullYear() - 17);
   return (
     <Form {...form}>
       <form
@@ -63,6 +63,7 @@ const EmployeeForm = forwardRef(({ employee, submit }, ref) => {
             name="dateOfBirth"
             label="Date of Birth"
             control={control}
+            toYear={new Date().getFullYear() - 17}
           />
           <FormDate name="startDate" label="Start Date" control={control} />
         </div>
