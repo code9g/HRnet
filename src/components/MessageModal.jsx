@@ -1,14 +1,19 @@
+import clsx from "clsx";
 import Modal from "code9g-modal";
 import { XIcon } from "lucide-react";
 import PropTypes from "prop-types";
 import { Button } from "./ui/button";
 
-function MessageModal({ isOpen, close, children }) {
+function MessageModal({ isOpen, close, className, children, ...args }) {
   return (
     <Modal
-      className="flex items-center justify-center bg-slate-500/25 transition-all duration-300"
+      className={clsx(
+        "flex items-center justify-center bg-slate-500/25 transition-all duration-300",
+        className
+      )}
       closeClass="opacity-0"
       isOpen={isOpen}
+      {...args}
       onEscape={close}
       onMouseOut={close}
     >
@@ -29,6 +34,7 @@ function MessageModal({ isOpen, close, children }) {
 MessageModal.propTypes = {
   isOpen: PropTypes.bool,
   close: PropTypes.func,
+  className: PropTypes.string,
   children: PropTypes.any,
 };
 

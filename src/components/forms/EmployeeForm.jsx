@@ -3,6 +3,7 @@ import { Form } from "@/components/ui/form";
 import { useDepartmentsSelector, useStatesSelector } from "@/redux/selectors";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PropTypes from "prop-types";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import FormCombo from "../controls/FormCombo";
@@ -27,13 +28,22 @@ const employeeSchema = z.object({
   department: z.string().min(1, { message: "Department is required" }),
 });
 
-function EmployeeForm({ employee, submit }) {
+const EmployeeForm = forwardRef(({ employee, submit }, ref) => {
+  const innerRef = useRef(null);
+  useImperativeHandle(ref, () => innerRef?.current);
+
   const form = useForm({
     defaultValues: { ...employee },
     resolver: zodResolver(employeeSchema),
   });
 
-  const { control } = form;
+  const { control, reset } = form;
+
+  useEffect(() => {
+    if (innerRef?.current) {
+      innerRef.current.reset = reset;
+    }
+  }, [reset]);
 
   const states = useStatesSelector();
   const departments = useDepartmentsSelector();
@@ -41,9 +51,10 @@ function EmployeeForm({ employee, submit }) {
   return (
     <Form {...form}>
       <form
-        noValidate
-        onSubmit={form.handleSubmit(submit)}
+        ref={innerRef}
         className="mx-auto w-1/2 space-y-6"
+        onSubmit={form.handleSubmit(submit)}
+        noValidate
       >
         <FormText name="firstName" label="First Name" control={control} />
         <FormText name="lastName" label="Last Name" control={control} />
@@ -94,11 +105,22 @@ function EmployeeForm({ employee, submit }) {
           ariaLabel="select department"
           control={control}
         />
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-end gap-4">
+          <Button
+            type="reset"
+            variant="outline"
+            onClick={() => reset(employee)}
+          >
+            Reset
+          </Button>
+          <Button type="submit">Submit</Button>
+        </div>
       </form>
     </Form>
   );
-}
+});
+
+EmployeeForm.displayName = "EmployeeForm";
 
 EmployeeForm.propTypes = {
   employee: PropTypes.object,

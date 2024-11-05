@@ -2,10 +2,11 @@ import EmployeeForm from "@/components/forms/EmployeeForm";
 import MessageModal from "@/components/MessageModal";
 import { useStatesSelector } from "@/redux/selectors";
 import { createEmployee } from "@/redux/slices/employeesSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 function CreateEmployee() {
+  const formRef = useRef(null);
   const states = useStatesSelector();
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -45,8 +46,12 @@ function CreateEmployee() {
       <h2 className="mb-4 p-4 text-center text-3xl font-bold">
         Create an Employee
       </h2>
-      <EmployeeForm employee={employee} submit={submit} />
-      <MessageModal isOpen={isOpen} close={() => setIsOpen(false)}>
+      <EmployeeForm ref={formRef} employee={employee} submit={submit} />
+      <MessageModal
+        isOpen={isOpen}
+        close={() => setIsOpen(false)}
+        onClose={() => formRef.current.reset()}
+      >
         Employee created susscessfuly !
       </MessageModal>
     </>
