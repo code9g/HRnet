@@ -47,7 +47,7 @@ const EmployeeForm = forwardRef(({ employee, submit }, ref) => {
 
   const states = useStatesSelector();
   const departments = useDepartmentsSelector();
-  console.log(new Date().getFullYear() - 17);
+
   return (
     <Form {...form}>
       <form
